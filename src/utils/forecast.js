@@ -12,11 +12,12 @@ const forecast = (lat, long, callback) =>{
         } else if(response.body.error){
             callback(response.body.error, undefined)
         } else {
+           
             callback(undefined , {
                 curr_temp: response.body.currently.temperature,
                 curr_rain : response.body.currently.precipProbability,
                 summary : response.body.daily.data[0].summary,
-                forcast : "Currently  temparature in celsius is " + response.body.currently.temperature + ". Also the probability of rain is  "  + response.body.currently.precipProbability
+                forcast : "Currently  temparature in celsius is " + response.body.currently.temperature + ". Also the probability of rain is  "  + response.body.currently.precipProbability + ' The maximum and minimum  temperature of the day was ' + response.body.daily.data[0].temperatureHigh  + ', ' + response.body.daily.data[0].temperatureLow + ' respectively.'
 
             });
         }
