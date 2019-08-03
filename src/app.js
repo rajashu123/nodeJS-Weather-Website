@@ -5,6 +5,10 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
+// Heroku will set it in env variable so we have to read it from there
+// We can not hardcord the port number.
+// So locally 3000 will be used and on heroku from env file port numer will be used
+const port = process.env.PORT || 3000
 /* consider we have a domain app.com. It will have pages like
    app.com/help , app.com/about etc
 
@@ -114,6 +118,6 @@ app.get('*', (req, res) => {
     })
 
 })
-app.listen(3000, () => {
-    console.log('Server is started on port 3000')
+app.listen(port, () => {
+    console.log('Server is started on port ' + port)
 })
